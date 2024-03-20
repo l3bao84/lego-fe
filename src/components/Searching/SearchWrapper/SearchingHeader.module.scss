@@ -1,0 +1,222 @@
+ol {
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    list-style-type: none;
+}
+a {
+    color: #006db7;
+    text-decoration: none;
+    background-color: transparent;
+}
+.searching-header {
+    padding: 0px 1.875rem;
+    margin-bottom: 25px;
+    max-width: 100%;
+    margin: 0px auto 20px;
+}
+.breadcrumbs-wrapper {
+    padding: .75rem 0;
+}
+.breadcrumbs-item {
+    height: 1.5rem;
+    align-items: center;
+    display: inline-flex;
+}
+.breadcrumbs-item > span {
+    color: #0067b2;
+    cursor: pointer;
+    padding: 0 .125rem;
+}
+.breadcrumbs-item > span > a:hover {
+    text-decoration: underline;
+}
+.breadcrumbs-item-link {
+    color: #0009;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none !important;
+    padding: 0 .125rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: .875rem;
+    line-height: 150%;
+}
+.icon-wrapper {
+    background-color: #868686;
+    mask: url(https://assets.lego.com/icons/v2.2.0/chevron-right-solid.svg);
+    margin: 0 .5rem;
+    height: .875rem;
+    aspect-ratio: 1;
+}
+.summary-wrapper {
+    flex-direction: row;
+    align-items: baseline;
+    display: flex;
+
+}
+.summary-textwrapper {
+    margin-right: auto;
+    flex-direction: row;
+    order: 1;
+    display: flex;
+    align-items: center;
+    // margin: 0;
+}
+.search-result-text {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.search-result-text > span {
+    font-weight: 550;
+}
+.summary-seperator {
+    margin: 0 20px;
+    display: inline-block;
+    height: 1.5rem;
+    border: 1px solid #767676;
+}
+.summary-result-count {
+    line-height: 1.75rem;
+    font-weight: 400;
+    text-transform: inherit;
+    white-space: nowrap !important;
+    color: #2c2c2c !important;
+}
+.summary-sortwrapper {
+    display: block;
+    margin-left: 1.25rem;
+    order: 4;
+}
+.sortby-dropdown-wrapper {
+    flex-direction: row;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+    display: flex;
+}
+.sort-select-wrapper {
+    flex-direction: row;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+    display: flex;
+    width: auto;
+}
+.select-component {
+    position: relative;
+    display: inline-block;
+    width: auto;
+}
+.active {
+    outline: none;
+    border: 1px solid rgb(0, 109, 183) !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 5px 0px;
+}
+.styled-select {
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 50px;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    color: rgb(44, 44, 44);
+    transition: box-shadow 0.2s ease-in 0s;
+    padding: 0.75rem 0px;
+    z-index: 1;
+    text-align: left;
+    font-size: 1rem;
+    // height: 40px !important;
+}
+.select-button-wrapper {
+    display: flex;
+    width: 100%;
+}
+.select-label {
+    color: rgb(117, 117, 117);
+    font-size: 0.875rem;
+    margin: 0px auto 1px 0px;
+    padding-right: 0.75rem;
+    padding-left: 1.25rem;
+    align-self: flex-end;
+    white-space: nowrap;
+}
+.selected-value {
+    text-align: left;
+    flex-direction: row;
+    margin-left: auto;
+    white-space: nowrap;
+    width: auto;
+}
+.select-chevron-wrapper {
+    margin: 0px 1.25rem;
+    height: 0px;
+    position: relative;
+    top: -2px;
+}
+.select-chevron-wrapper > svg {
+    transition: transform 0.1s linear 0s;
+    display: block;
+    flex: 0 0 auto;
+    transform: rotate(90deg);
+    line-height: 0;
+    width: 8px;
+}
+.custom-dropdown {
+    transform: scaleY(0);
+    margin-top: 10px;
+    position: absolute;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    min-width: 100%;
+    top: 50px;
+    right: 0px;
+    z-index: 3;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: 1px solid rgb(224, 224, 224);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 5px 0px;
+    //margin: 0px;
+    padding: 12px;
+    transition: all 0.2s ease-in 0s;
+    transform-origin: center top;
+}
+.custom-dropdown li {
+    margin: 0px;
+    width: 100%;
+}
+.custom-dropdown li:hover {
+    background: rgb(230, 243, 255);
+}
+.custom-dropdown li label {
+    padding: 4px 8px;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+}
+.custom-dropdown li label > span {
+    white-space: nowrap;
+    margin-right: auto;
+}
+.custom-dropdown li input {
+    visibility: hidden;
+    width: 0px;
+    box-sizing: border-box;
+    padding: 0;
+}
+

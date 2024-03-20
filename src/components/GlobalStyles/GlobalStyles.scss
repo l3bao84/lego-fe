@@ -1,0 +1,23 @@
+@import 'normalize.css';
+
+
+:root {
+  
+}
+html {
+  min-height: 100%;
+  height: 100%;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Cera Pro', sans-serif;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  color: #2c2c2c;
+}

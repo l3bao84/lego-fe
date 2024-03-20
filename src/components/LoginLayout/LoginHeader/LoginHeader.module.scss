@@ -1,0 +1,72 @@
+/*login header*/
+.application-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.application-header-content {
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 4vw);
+    max-width: 900px;
+    height: 90px;
+}
+.application-header-start {
+    justify-content: start;
+    display: flex;
+    flex: 1;
+}
+.application-header-center {
+    justify-content: center;
+    display: flex;
+    flex: 1;
+}
+.button-base {
+    margin: 5px;
+    padding: 0.4rem;
+    font-size: inherit;
+    line-height: inherit;
+    color: #006cb7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: Typewell,sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(0,108,183,0.4);
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.button-base:focus {
+    outline: none;
+}
+.button-text-base > img {
+    width: 2.5625rem;
+    height: 2.5625rem;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.application-header-end {
+    justify-content: end;
+    display: flex;
+    flex: 1;
+}
+.icon {
+    color: inherit;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon > svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+}

@@ -1,0 +1,283 @@
+button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    //padding-inline-start: 40px;
+}
+li {
+    list-style-type: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    border-style: none;
+    width: 55px;
+}
+input {
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+a {
+    color: #006db7;
+    text-decoration: none;
+}
+
+// footer 
+footer {
+    width: 100vw;
+}
+.footer-1,
+.footer-2,
+.footer-3 {
+    background: rgb(32, 29, 72);
+    color: rgb(255, 255, 255);
+    padding: 40px 20px 20px;
+}
+.footer-section {
+    display: block;
+}
+.footer-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 82.5rem;
+    background-color: rgb(32, 29, 72);
+    margin: 0px auto;
+}
+.wrapper-logo-region {
+    margin-right: 1.25rem;
+    padding: 0px;
+    flex: 1 1 0%;
+    background: rgb(32, 29, 72);
+    color: rgb(255, 255, 255);
+}
+.logo-region {
+    max-width: 601px;
+    display: block;
+}
+.logo-img2 {
+    display: flex;
+    margin-bottom: 20px;
+}
+.logo-img2 > img {
+    height: 6.0625rem;
+    width: 6.0625rem;
+    margin-right: 0.75rem;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.region {
+    margin-bottom: 0px;
+    flex: 1 1 0%;
+    display: flex;
+    align-items: flex-start;
+}
+.region > button {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.1875rem;
+    padding: 0.625rem 0.9375rem 0.625rem 0.625rem;
+    background-color: rgb(24, 21, 45);
+    margin-bottom: 1.5625rem;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+.region > button > i {
+    padding: 0.625rem;
+    margin: 0px 0.625rem 0px 0px;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    line-height: 0;
+    height: 19px;
+    width: 25px;
+}
+.gift-cards > a {
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    text-decoration: none;
+    display: block;
+    color: #fff;
+    padding: 0.625rem 0px
+}
+.gift-cards > a:hover {
+    text-decoration: underline;
+}
+.wrapper-supports {
+    padding-top: 0.625rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 4 1 0%;
+}
+.support {
+    flex: 1 1 0%;
+    padding-left: 0.625rem;
+    margin-right: 1.25rem;
+}
+.support-title {
+    padding: 0px 0.9375rem;
+    margin: 0px 0px 1.5625rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+.support-list {
+    list-style: none;
+    cursor: pointer;
+}
+.support-list-item {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.support-list-item > a {
+    display: block;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 0.625rem 0.9375rem;
+    font-size: 1rem;
+    line-height: 1.5625rem;
+}
+.support-list-item > a:hover {
+    text-decoration: underline;
+}
+.privacies {
+    display: flex;
+    flex-direction: column;
+    max-width: 82.5rem;
+    background-color: rgb(32, 29, 72);
+    margin: 0px auto;
+}
+.privacy-list {
+    list-style: none;
+    display: flex;
+}
+.privacy-list-item {
+    margin: 0 30px 20px 0;
+}
+.privacy-list-item:hover > a {
+    text-decoration: underline;
+}
+.privacy-list-item > a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+}
+.privacies > p {
+    font-size: 12px;
+    margin: 0 0 20px;
+}
+.email-social {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    max-width: 82.5rem;
+    background-color: rgb(32, 29, 72);
+    margin: 0px auto;
+}
+.email-input-container {
+    width: 250px;
+    margin: 30px 0 0;
+}
+.input-button {
+    display: flex;
+    width: 100%;
+}
+.email {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(44, 44, 44);
+    //height: 3.45rem;
+    position: relative;
+    padding: 1.125rem 2.8125rem 0px 1.25rem;
+    border: 1px solid rgb(224, 224, 224);
+}
+.email > input {
+    border: none;
+    outline: none;
+}
+.email-sub-error {
+    position: absolute;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 550;
+    left: 0;
+    top: 100%;
+}
+.btn-go:hover {
+    color: #000;
+}
+.btn-go {
+    white-space: nowrap;
+    transform: translateX(-20px);
+    margin-right: -1px;
+    border-radius: 0px 0.3125rem 0.3125rem 0px;
+    box-shadow: none;
+    max-height: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: inline-block;
+    width: auto;
+    padding: 0.9375rem;
+    border-style: solid;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
+    background-color: rgb(253, 128, 36);
+    border-color: rgb(253, 128, 36);
+    color: rgb(0, 0, 0);
+    position: relative;
+    border-width: 2px;
+}
+.email-sub,
+.social {
+    display: block;
+    max-width: 82.5rem;
+
+}
+.email-sub-content > span,
+.social-icon > span {
+    font-weight: 550;
+}
+.social-button {
+    margin: 30px 0 0;
+    display: flex;
+}
+.social-button-icon {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    margin: 0 20px 0 0;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background-color: #121029;
+}
+.social-button-icon > a {
+    color: #fff;
+}
