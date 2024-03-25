@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { format } from 'date-fns';
 
 export const useDetailProduct = () => {
     const [product, setProduct] = useState();
@@ -70,3 +71,32 @@ export const calculateReviewCounts = (reviews) => {
   
     return reviewCounts;
   }
+
+export const useProductReviews = (page) => {
+
+    const [reviews, setReviews] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const {id} = useParams()
+    useEffect(() => {
+        const fetchReviews = () => {
+            fetch(`http://localhost:8080/reviews/${id}?page=${page}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((result) => {
+                    setReviews(result.content)
+                    setTotalPages(result.totalPages)
+                })
+                .catch((error) => {
+                    console.error('Error fetching products:', error);
+            });
+        };
+
+        fetchReviews()
+    }, [id,page]);
+
+    return {reviews, totalPages}
+}  

@@ -4,6 +4,7 @@ import RecommendedProducts from '../RecommendedProducts';
 import ProductDetailContainer from './Container';
 import ProductInfor from './ProductInfor';
 import ProductReview from './ProductReview';
+import ShopMore from './ShopMore';
 import { useDetailProduct, useCategory } from './service';
 
 const cx = classNames.bind(styles);
@@ -65,6 +66,7 @@ function DetailProduct() {
             <ProductDetailContainer></ProductDetailContainer>
             <ProductInfor></ProductInfor>
             <ProductReview></ProductReview>
+            <ShopMore categoryName={(category && category.categoryName) && category.categoryName}></ShopMore>
             <RecommendedProducts></RecommendedProducts>
         </div>
     );
