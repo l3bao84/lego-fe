@@ -9,7 +9,8 @@ import ShopContent from './SubmenuContent/ShopContent'
 import DiscoverContent from './SubmenuContent/DiscoverContent'
 import HelpContent from './SubmenuContent/HelpContent'
 import useAuth from '~/auth';
-
+import { useCart } from '~/components/CartList/service';
+import SignInModal from '~/components/SignInModal';
 
 const cx = classNames.bind(styles);
 
@@ -19,8 +20,11 @@ function Header() {
     const [visibleSubnav, setVisibleSubnav] = useState(false);
     const [activeSubMenuButton, setActiveSubMenuButton] = useState(null);
     const [activeSubMenuContent, setActiveSubMenuContent] = useState(null);
+    const [visibleSignInModal, setVisibleSignInModal] = useState(false)
     const [inputSearch, setInputSearch] = useState('');
     const [bannerIndex, setBannerIndex] = useState(0)
+    const { cartItems } = useCart();
+
     const navigate = useNavigate()
     
     const isAuthenticated = useAuth()
@@ -87,9 +91,18 @@ function Header() {
         navigate(`/search?key=${inputSearch}`)
     }
 
+    const handleSignInModal = () => {
+        setVisibleSignInModal(true)
+    }
+
+    const handleCloseSinInModal = () => {
+        setVisibleSignInModal(false)
+    }
+
     return (
         <div>
             <header>
+                {visibleSignInModal && <SignInModal close={handleCloseSinInModal} isVisible={visibleSignInModal}></SignInModal>}
                 <div className={cx("header-wrapper")}>
                     <div className={cx("utility-bar-container")}>
                         <div className={cx("contact-wrapper")}>
@@ -116,7 +129,7 @@ function Header() {
                         <div className={cx("account-wrapper")}>
                             <button className={cx("account-button")}>
                                 <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className={cx("icon-styled")}><g transform="translate(1 1)" fillRule="nonzero" fill="none"><rect stroke="#2C2C2C" strokeWidth="1.5" fill="#FFCF00" x="4.875" width="8.25" height="6.038" rx=".729"></rect><rect stroke="#2C2C2C" strokeWidth="1.2" fill="#FFCF00" x="3.75" y="14.34" width="10.5" height="5.66" rx=".729"></rect><path d="M14.25 17.736H3.75C0 17.736 0 14.717 0 14.717v-8.68S0 3.02 3.75 3.02h10.5C18 3.019 18 6.038 18 6.038v8.679s0 3.019-3.75 3.019z" stroke="#2C2C2C" strokeWidth="1.5" fill="#FFCF00"></path><path d="M7.125 8.868a.94.94 0 00-.938-.943.94.94 0 00-.937.943c0 .52.42.943.938.943a.94.94 0 00.937-.943zm4.688-.943a.94.94 0 00-.938.943c0 .52.42.943.938.943a.94.94 0 00.937-.943.94.94 0 00-.938-.943zm.293 3.86a.452.452 0 00-.649.21c-.005.008-.461.84-2.463.84-1.953 0-2.437-.793-2.462-.84a.446.446 0 00-.638-.234.618.618 0 00-.215.761c.063.147.69 1.446 3.315 1.446s3.25-1.299 3.313-1.446a.609.609 0 00-.201-.738z" fill="#2C2C2C"></path></g></svg>
-                                {isAuthenticated ? <span onClick={() => handleLogout()}>Account</span> : <span>Sign In</span>}
+                                {isAuthenticated ? <span onClick={() => handleLogout()}>Account</span> : <span onClick={() => handleSignInModal()}>Sign In</span>}
                             </button>
                         </div>
                     </div>
@@ -188,9 +201,9 @@ function Header() {
                                 <button className={cx("styled-button")}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" aria-hidden="true" className={cx("icon-styled")}><path d="M16.84 8.417L10 15.204 3.16 8.417A3.67 3.67 0 012 5.739C2 3.677 3.71 2 5.815 2a3.82 3.82 0 012.754 1.159l1.43 1.467 1.433-1.467A3.818 3.818 0 0114.186 2C16.289 2 18 3.677 18 5.739a3.673 3.673 0 01-1.16 2.678M9.986 18l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 001.78-4.126C20 2.569 17.398 0 14.187 0A5.829 5.829 0 0010 1.762 5.827 5.827 0 005.815 0C2.604 0 0 2.569 0 5.739a5.68 5.68 0 001.782 4.126" fill="currentColor" fillRule="evenodd"></path></svg>
                                 </button>
-                                <a className={cx("styled-link")}>
+                                <a href='/cart' className={cx("styled-link")}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" aria-hidden="true" className={cx("icon-styled")}><g fill="currentColor" fillRule="evenodd"><path d="M4 3.512v5.804c0 .377.349.684.779.684.43 0 .779-.307.779-.684V3.512C5.558 2.33 6.653 1.368 8 1.368c1.347 0 2.442.962 2.442 2.144v5.804c0 .377.35.684.78.684.43 0 .778-.307.778-.684V3.512C12 1.575 10.206 0 8 0S4 1.575 4 3.512z"></path><path d="M2.46 6.33c-.269 0-.489.194-.5.441L1.435 18.19a.436.436 0 00.131.332.52.52 0 00.348.149h12.151c.276 0 .501-.207.501-.462l-.525-11.436c-.011-.248-.23-.442-.5-.442H2.46zM14.448 20l-12.974-.001a1.591 1.591 0 01-1.064-.462 1.357 1.357 0 01-.408-1.03L.56 6.372C.595 5.602 1.277 5 2.11 5h11.78c.835 0 1.516.602 1.551 1.372l.56 12.197c0 .789-.697 1.431-1.553 1.431z"></path></g></svg>
-                                    (0)
+                                    {!isAuthenticated ? `(0)` : `(${cartItems.length})`}
                                 </a>
                             </div>
                         </div>

@@ -1,8 +1,8 @@
 import styles from '../RecommendedProducts/RecommendedProducts.module.scss';
 import classNames from 'classnames/bind';
-import { useEffect, useState, useRef, CSSProperties } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import BarLoader from "react-spinners/BarLoader";
-
+import AddToBagNotifications from '../AddToBagNoti';
 import ProductSwiper from './productSwiper';
 
 const cx = classNames.bind(styles);
@@ -12,6 +12,17 @@ function RecommendedProducts() {
     const nextBtn = useRef(null);
     const prevBtn = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [addToCartData, setAddToCartData] = useState();
+    const [showNotification, setShowNotification] = useState(false);
+
+    const handleAddToCartSuccess = (data) => {
+        setAddToCartData(data);
+        setShowNotification(true);
+    };
+
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
 
     useEffect(() => {
         setIsLoading(true);
@@ -19,7 +30,9 @@ function RecommendedProducts() {
     }, []);
 
     return (
+        
         <div className={cx('recommended-section')}>
+            {showNotification && <AddToBagNotifications onClose={handleCloseNotification} product={addToCartData}></AddToBagNotifications>}
             <div>
                 <div className={cx('product-recommentaion-container')}>
                     <div className={cx('product-recommentaion-wrapper')}>
@@ -47,7 +60,7 @@ function RecommendedProducts() {
                                         </button>
                                         <div className={cx('scroll-area-wrapper')}>
                                             <div className={cx('scroll-area')}>
-                                                <ProductSwiper nextBtn={nextBtn} prevBtn={prevBtn}></ProductSwiper>
+                                                <ProductSwiper onDataUpdate={handleAddToCartSuccess} nextBtn={nextBtn} prevBtn={prevBtn}></ProductSwiper>
                                             </div>
                                         </div>
                                         <button ref={nextBtn} className={cx('carousel-control-button-right')}>

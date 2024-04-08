@@ -2,16 +2,22 @@ import styles from '../SearchListing.module.scss'
 import classNames from 'classnames/bind';
 import { useRef, useState, useEffect} from 'react';
 import BarLoader from "react-spinners/BarLoader";
-import { useLocation } from 'react-router-dom';
-import { useSearchProducts } from '../../searchProductService';
+import useAuth from '~/auth';
+import { useNavigate } from 'react-router-dom';
+import AddToBagNotifications from '~/components/AddToBagNoti';
+import { useCart } from '~/components/CartList/service';
 
 const cx = classNames.bind(styles);
 
 function SearchListingContent({products, totalPages, onValueChange}) {
 
-    const param = new URLSearchParams(useLocation().search).get("key")
     const [isLoading, setIsLoading] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
+    const [responseProduct, setResponseProduct] = useState()
+    const { reloadCart } = useCart()
     const [page, setPage] = useState(0)
+    const isAuthenticated = useAuth()
+    const navigate = useNavigate()
 
     const handlePageChange = (value) => {
         setPage(value)
@@ -32,8 +38,49 @@ function SearchListingContent({products, totalPages, onValueChange}) {
         return totalRating / reviews.length;
     }
 
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
+
+    const handleAddToCart = (id, quantity = 1) => {
+        
+        if(!isAuthenticated) {
+            navigate('/login')
+        }else {
+            const postData = {
+                id,
+                quantity,
+            };
+    
+            fetch('http://localhost:8080/carts', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+                })
+            .then(response => {
+                if (response.status !== 201) {
+                    throw new Error('Failed to add product to cart');
+                }
+                reloadCart()
+                return response.json();
+            })
+            .then(data => {
+                setResponseProduct(data)
+                setShowNotification(true)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+    }
+
     return (
         <div className={cx("search-page-container")}>
+            {showNotification && <AddToBagNotifications onClose={handleCloseNotification} product={responseProduct}></AddToBagNotifications>}
             {isLoading ? 
             <BarLoader color={'rgb(255, 207, 0)'} className={cx("loader")} loading={isLoading} size={10} />
             : 
@@ -93,16 +140,15 @@ function SearchListingContent({products, totalPages, onValueChange}) {
                                 <span className={cx("product-leaf-price")}>
                                     <span className={cx("price-sm-bold")}>{`$${item.price}`}</span>
                                 </span>
-                                <form action="" method="post" className={cx("product-leaf-action")}>
-                                    <input type="hidden" name="quantity" value="1"/>
-                                    <button className={cx("add-to-bag-button")}>
+                                <div className={cx("product-leaf-action")}>
+                                    <button onClick={() => handleAddToCart(item.productId)} className={cx("add-to-bag-button")}>
                                         <div className={cx("icon-wrapper-leaf")}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="currentColor" data-di-res-id="4b715c35-5c943802" data-di-rand="1693290376384"><path d="M28.036 8.889V5a5.106 5.106 0 0 0-1.416-3.532A4.747 4.747 0 0 0 23.214 0h-6.428a4.747 4.747 0 0 0-3.406 1.468A5.106 5.106 0 0 0 11.964 5v3.889H5V35a5.107 5.107 0 0 0 1.415 3.532A4.747 4.747 0 0 0 9.821 40H30.18a4.747 4.747 0 0 0 3.406-1.468A5.106 5.106 0 0 0 35 35V8.889h-6.964ZM15.179 5c0-.442.169-.866.47-1.179.302-.312.71-.488 1.137-.488h6.428c.427 0 .835.176 1.137.488.301.313.47.737.47 1.179v3.889H15.18V5Zm16.607 30c0 .442-.17.866-.471 1.178-.301.313-.71.489-1.136.489H9.82c-.426 0-.835-.176-1.136-.489A1.698 1.698 0 0 1 8.215 35V12.222h3.75v4.445h3.214v-4.445h9.642v4.445h3.215v-4.445h3.75V35Z"></path>
                                         </svg>
                                         </div>
                                         <span>Add to Bag</span>
                                     </button>
-                                </form>
+                                </div>
                             </div>
                         </li>
                     ))}

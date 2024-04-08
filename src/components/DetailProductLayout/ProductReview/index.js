@@ -227,12 +227,19 @@ function ProductReview() {
                                                     ))}
                                                 </ul>
                                             </div>
-                                            <div className={cx('send-review-container')}>
-                                                <input
-                                                    onClick={(e) => hanleSubmitReview(e)}
-                                                    type="submit"
-                                                    value="Submit Your Review"
-                                                ></input>
+                                            <div className={cx("review-action-container")}> 
+                                                <div className={cx('cancel-review-container')}>
+                                                    <button
+                                                        type="button"
+                                                    >Cancel</button>
+                                                </div>
+                                                <div className={cx('send-review-container')}>
+                                                    <input
+                                                        onClick={(e) => hanleSubmitReview(e)}
+                                                        type="submit"
+                                                        value="Submit Your Review"
+                                                    ></input>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

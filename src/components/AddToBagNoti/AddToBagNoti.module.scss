@@ -1,0 +1,197 @@
+.modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    opacity: 1;
+}
+.modal-window {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    transform: scale(1) translateY(0px);
+    height: auto;
+    width: auto;
+    max-height: 95%;
+    max-width: 82.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+}
+.close-button-wrapper {
+    position: absolute;
+    right: 0px;
+    z-index: 2;
+}
+.close-button {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: inherit;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.close-button svg {
+    line-height: 0;
+}
+.add-to-bag-modal {
+    width: 36.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.9375rem 1.25rem;
+}
+.header svg {
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 151, 62);
+    padding: 0.4375rem;
+    height: 2.1875rem;
+    width: 2.1875rem;
+    margin-right: 0.75rem;
+    line-height: 0;
+}
+.header h2 {
+    font-size: 1.25rem;
+    line-height: 1.9375rem;
+    margin: 0px;
+    color: inherit;
+    font-weight: 400;
+    text-transform: inherit;
+}
+.divider {
+    height: 1px;
+    background-color: rgb(224, 224, 224);
+    margin: 0px 0.625rem;
+}
+.body {
+    margin-bottom: 0px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.product-infor-container {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 1.25rem;
+}
+.item-row {
+    margin-bottom: 1.25rem;
+    display: flex;
+}
+.image-container {
+    width: 6.25rem;
+    height: 6.25rem;
+    border: 1px solid rgb(224, 224, 224);
+    padding: 0.3125rem;
+    margin-right: 0.75rem;
+    background-color: rgb(255, 255, 255);
+}
+.image-container img {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    object-fit: contain;
+}
+.product-name {
+    margin: 0px 0px 0.625rem;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    font-weight: 500;
+    text-transform: inherit;
+}
+.product-price {
+    margin: 0px 0px 0.625rem;
+    color: inherit;
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    font-weight: 700;
+    text-transform: inherit;
+}
+.product-qty {
+    margin: 0px 0px 0.625rem;
+    color: rgb(117, 117, 117);
+    font-size: 0.75rem;
+    line-height: 1.1875rem;
+    font-weight: 400;
+    text-transform: inherit;
+}
+.actions-container {
+    padding: 1.25rem;
+    z-index: 1;
+    margin-top: auto;
+    box-shadow: 0 -1px 15px #ccc;
+}
+.actions-buttons-container {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.actions-buttons-container button {
+    display: inline-block;
+    width: calc(50% - 0.9375rem);
+    max-width: 16.25rem;
+    margin-right: 0.9375rem;
+    margin-bottom: 0px;
+    padding: 0.9375rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(0, 90, 210);
+    color: rgb(0, 0, 0);
+}
+.actions-buttons-container button:hover {
+    background: rgb(229, 242, 255);
+}
+.actions-buttons-container a {
+    display: inline-block;
+    width: calc(50% - 0.9375rem);
+    max-width: 16.25rem;
+    padding: 0.9375rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
+    background-color: rgb(0, 90, 210);
+    color: rgb(255, 255, 255);
+    border-color: rgb(0, 90, 210);
+}
+.actions-buttons-container a:hover {
+    text-decoration: none;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}

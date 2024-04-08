@@ -1048,8 +1048,29 @@
     height: 10px;
     width: 10px;
 }
-.send-review-container {
-    text-align: right;
+.review-action-container {
+    display: flex;
+    justify-content: space-between;
+}
+.cancel-review-container button {
+    display: inline-block;
+    width: auto;
+    padding: 0.9375rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
+    background-color:  rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 109, 183);
+}
+.cancel-review-container button:hover {
+    background-color: rgb(0, 109, 183);
+    color: rgb(255, 255, 255);
 }
 .send-review-container > input {
     display: inline-block;

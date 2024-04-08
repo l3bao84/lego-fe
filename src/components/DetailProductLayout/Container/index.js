@@ -3,14 +3,25 @@ import classNames from 'classnames/bind';
 import { useDetailProduct } from '../service';
 import { useState, useRef } from 'react';
 import Rating from '~/components/Layout/Rating';
+import useAuth from '~/auth';
+import { useNavigate } from 'react-router-dom';
+import AddToBagNotifications from '~/components/AddToBagNoti';
+import { useCart } from '~/components/CartList/service';
 
 const cx = classNames.bind(styles);
 
 function ProductDetailContainer() {
+
     const product = useDetailProduct();
     const [activeImage, setActiveImage] = useState(0);
     const [inputQuantity, setInputQuantity] = useState(1)
+    const [showNotification, setShowNotification] = useState(false);
+    const [responseProduct, setResponseProduct] = useState()
+    const { reloadCart } = useCart()
     const inputRef = useRef()
+    const isAuthenticated = useAuth()
+    const navigate = useNavigate()
+
 
     const calculateAverageRating = (reviews) => {
         if (!reviews || reviews.length === 0) {
@@ -21,8 +32,48 @@ function ProductDetailContainer() {
         return totalRating / reviews.length;
     };
 
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
+
+    const handleAddToCart = (id) => {
+        if(!isAuthenticated) {
+            navigate('/login')
+        }else {
+            const postData = {
+                id,
+                quantity: inputQuantity,
+            };
+
+            fetch('http://localhost:8080/carts', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+                })
+            .then(response => {
+                if (response.status !== 201) {
+                    throw new Error('Failed to add product to cart');
+                }
+                reloadCart()
+                return response.json();
+            })
+            .then(data => {
+                setResponseProduct(data)
+                setShowNotification(true)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+    }
+
     return (
         <div className={cx('product-detail-container')}>
+            {showNotification && <AddToBagNotifications onClose={handleCloseNotification} product={responseProduct}></AddToBagNotifications>}
             <div className={cx('product-detail-layout')}>
                 <div className={cx('product-detail-gallery')}>
                     <div className={cx('galley-container')}>
@@ -219,7 +270,7 @@ function ProductDetailContainer() {
                                 <input ref={inputRef} value={inputQuantity} className={cx('quantity-value')} type="text" readOnly/>
                             </div>
                             <button 
-                            onClick={() => inputQuantity < 3 && setInputQuantity(inputQuantity + 1)}
+                            onClick={() => inputQuantity < 5 && setInputQuantity(inputQuantity + 1)}
                             className={cx('modify-button-plus')}
                             >
                                 <svg
@@ -231,19 +282,19 @@ function ProductDetailContainer() {
                                     data-di-rand="1692177394837"
                                 >
                                     <polygon 
-                                    style={{fill: inputQuantity === 3 ? '#E0E0E0' : 'black',
-                                            pointerEvents: inputQuantity === 3 ? 'none' : null}}
+                                    style={{fill: inputQuantity === 5 ? '#E0E0E0' : 'black',
+                                            pointerEvents: inputQuantity === 5 ? 'none' : null}}
                                     fill="black" 
                                     points="14 8 0 8 0 6 14 6" ></polygon>
                                     <rect
-                                    style={{fill: inputQuantity === 3 ? '#E0E0E0' : 'black',
-                                            pointerEvents: inputQuantity === 3 ? 'none' : null}}  
+                                    style={{fill: inputQuantity === 5 ? '#E0E0E0' : 'black',
+                                            pointerEvents: inputQuantity === 5 ? 'none' : null}}  
                                     fill="black" fillRule="nonzero" x="6" y="0" width="2" height="14"></rect>
                                 </svg>
                             </button>
                         </div>
                         <div className={cx('max-quantity')}>
-                            <span className={cx('text')}>Limit 3</span>
+                            <span className={cx('text')}>Limit 5</span>
                         </div>
                     </div>
                     <div className={cx('product-button-wrapper')}>
@@ -252,9 +303,8 @@ function ProductDetailContainer() {
                                 <div className={cx('add-to-bag-sticky-container')}>
                                     <div className={cx('add-to-bag-container-content-holder')}>
                                         <div className={cx('add-to-bag-container-holder')}>
-                                            <form action="" method="post" className={cx('extra-large-button')}>
-                                                <input type="hidden" name="quantity" id="quantity-form" value="1" />
-                                                <button className={cx('add-to-cart-button')}>
+                                            <div className={cx('extra-large-button')}>
+                                                <button onClick={() => handleAddToCart((product && product.id) && product.id)} className={cx('add-to-cart-button')}>
                                                     <div className={cx('icon-wrapper')}>
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +317,7 @@ function ProductDetailContainer() {
                                                     </div>
                                                     Add to Bag
                                                 </button>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
