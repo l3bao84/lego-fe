@@ -9,7 +9,7 @@ function Product() {
 
     useEffect(() => {
         if(product && product.productName) {
-            document.title = `${product.productName} | LEGO Shop`
+            document.title = `${product.productName} | Nidas Shop`
         }    
     }, [product]);
 

@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import LoginHeader from './LoginHeader';
 import LoginMain from './LoginMain';
 import LoginFooter from './LoginFooter';
-import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 

@@ -5,7 +5,7 @@ function Login() {
 
     useEffect(() => {
 
-        document.title = "LEGO Sign In"
+        document.title = "Nidas Sign In"
 
     }, [])  
 

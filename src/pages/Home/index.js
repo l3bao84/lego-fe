@@ -7,7 +7,7 @@ import { useEffect } from "react";
 function Home() {
 
     useEffect(() => {
-        document.title = 'Home | LEGO Shop';
+        document.title = 'Home | Nidas Shop';
       }, []);
 
     const contentProps = {

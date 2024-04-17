@@ -1,0 +1,28 @@
+.add_address_button {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    background-color: #fff;
+    border: 1px dotted #b1b1b1;
+    padding: 1rem;
+    cursor: pointer;
+    min-height: 8rem;
+    border-radius: .5rem;
+}
+.add_address_button > div {
+    background-color: #747474;
+    mask: url(https://assets.lego.com/icons/legacy/v0.27.0/add.svg) no-repeat;
+    height: 3rem;
+    aspect-ratio: 1;
+}
+.add_address_button > span {
+    margin-left: 1rem;
+    color: #747474;
+    letter-spacing: 0;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    font-weight: 400;
+}

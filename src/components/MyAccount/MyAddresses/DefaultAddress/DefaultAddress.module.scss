@@ -1,0 +1,281 @@
+.personal_infor-title {
+    margin: .75rem 0;
+    font-weight: 550;
+    letter-spacing: 0;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+.personal_info {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.main_info {
+    display: flex;
+    flex-direction: column;
+}
+.info_card {
+    flex: 1;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: .5rem;
+}
+.an_info_card {
+    padding: 1.25rem;
+}
+.infor_horizontal_layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.infor_horizontal_layout > div {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+.info_label {
+    margin: .25rem 0;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.saved_address-control {
+    display: flex;
+    flex-direction: column;
+    margin-top: .75rem;
+    gap: .25rem;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+.edit_address_button,
+.remove_address_button {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-clip: padding-box;
+    border-radius: 62.4375rem;
+    border: .125rem transparent solid;
+    min-width: max-content;
+    outline: none !important;
+    height: calc(2.5rem + 2*.125rem);
+    padding: 0 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-transform: none;
+    overflow: visible;
+}
+.edit_address_button {
+    background-color: #005ad2;
+    color: #fff;
+}
+.edit_address_button > div {
+    mask: url(https://assets.lego.com/icons/legacy/v0.27.0/pen-f.svg) no-repeat;
+    margin-right: .75rem;
+    height: 1.125rem;
+    width: 1.125rem;
+    background-color: #fff;
+    aspect-ratio: 1;
+}
+.edit_address_button:hover {
+    background-color: #0045b7;
+}
+.remove_address_button {
+    box-shadow: inset 0 0 0 .125rem #005ad2;
+    background-color: transparent;
+    color: #141414;
+}
+.remove_address_button > div {
+    mask: url(https://assets.lego.com/icons/legacy/v0.27.0/delete-f.svg) no-repeat;
+    margin-right: .75rem;
+    height: 1.125rem;
+    width: 1.125rem;
+    background-color: #141414;
+    aspect-ratio: 1;
+}
+.remove_address_button:hover {
+    box-shadow: none;
+    background-color: #0045b7;
+    color: #fff;
+}
+.remove_address_button:hover > div {
+    background-color: #fff;
+}
+
+// edit default address
+.address_page-default {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.address_page-main {
+    display: flex;
+    flex-direction: column;
+}
+.address_card {
+    flex: 1;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: .5rem;
+}
+.address_form {
+    display: flex;
+    background-color: #f2f2f2;
+    padding: 1rem;
+    flex-direction: column;
+    border-radius: .5rem;
+}
+.cancel_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: .75rem;
+}
+.cancel_header-button {
+    text-decoration: underline;
+    background-clip: padding-box;
+    background-color: transparent;
+    border-radius: 62.4375rem;
+    border: .125rem transparent solid;
+    color: #141414;
+    min-width: max-content;
+    outline: none !important;
+    height: calc(2rem + 2* .125rem);
+    padding: 0 .75rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+.cancel_header-button:hover {
+    text-decoration: none;
+    background-color: #00000012;
+}
+.cancel_header-button span {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.manual_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.manual_form-input {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.address_input-container {
+    min-width: 49%;
+    margin-bottom: .75rem;
+    height: 5rem;
+}
+.textfield_container {
+    flex-direction: column;
+    display: flex;
+}
+.textfield_label {
+    color: #747474;
+    letter-spacing: 0;
+    font-size: .875rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.textfield_input_container {
+    border: .125rem solid transparent;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 .0625rem #b1b1b1;
+    border-radius: .5rem;
+    background-clip: padding-box;
+    background-color: #fff;
+    color: #141414;
+    transition: all .2s;
+    display: inline-flex;
+    height: calc(2.5rem + 2* .125rem);
+    padding: 0 1rem;
+    letter-spacing: 0;
+    font-size: .875rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.textfield_input_container:hover {
+    box-shadow: inset 0 0 0 .125rem #0045b7;
+}
+.textfield_input {
+    appearance: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    display: inline-flex;
+    position: relative;
+}
+.textfield_input > input {
+    color: #141414;
+    background-color: #0000;
+    border: none;
+    width: 100%;
+    padding: 0;
+    overflow: visible;
+}
+.textfield_input > input:focus {
+    outline: none;
+}
+.manual_form-default {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+.manual_form-button {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .75rem;
+}
+.cancel_edit_button,
+.save_edit_button {
+    width: 50%;
+    background-clip: padding-box;
+    border-radius: 62.4375rem;
+    border: .125rem transparent solid;
+    min-width: max-content;
+    outline: none !important;
+    height: calc(2.5rem + 2* .125rem);
+    padding: 0 1rem;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.cancel_edit_button {
+    background-color: transparent;
+    color: #141414;
+    box-shadow: inset 0 0 0 .125rem #005ad2;
+}
+.cancel_edit_button:hover {
+    background-color: #0045b7;
+    color: #fff;
+    box-shadow: none;
+}
+.save_edit_button {
+    color: #fff;
+    background-color: #005ad2;
+}
+.save_edit_button:hover {
+    background-color: #0045b7;
+}

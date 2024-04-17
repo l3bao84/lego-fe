@@ -5,7 +5,7 @@ import SearchWrapper from "~/components/Searching/SearchWrapper";
 function Search() {
 
     useEffect(() => {
-        document.title = 'Search results | LEGO Shop';
+        document.title = 'Search results | Nidas Shop';
     }, []);
 
     const contentProps = {

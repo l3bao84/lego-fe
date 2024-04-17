@@ -6,7 +6,7 @@ import CartList from "~/components/CartList";
 function Cart() {
 
     useEffect(() => {
-        document.title = 'My Cart | LEGO Shop';
+        document.title = 'My Cart | Nidas Shop';
     }, []);
 
     const contentProps = {
