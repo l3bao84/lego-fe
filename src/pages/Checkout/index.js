@@ -1,12 +1,14 @@
+import CheckoutLayout from "~/components/CheckoutLayout";
+import { useEffect } from "react";
+
 function Checkout() {
+
+    useEffect(() => {
+        document.title = 'Secure Checkout | Nidas Shop';
+      }, []);
+
     return (
-        <div className="App">
-            <main className="App-main">
-                <div className="App-intro">
-                    <h1>Checkout</h1>
-                </div>
-            </main>
-        </div>
+        <CheckoutLayout/>
     );
 }
 
