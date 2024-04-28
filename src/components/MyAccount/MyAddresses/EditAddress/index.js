@@ -1,22 +1,53 @@
 import styles from './EditAddress.module.scss';
 import classNames from 'classnames/bind';
 import React from 'react';
+import { useState } from 'react';
+import { useAddAddress } from '../../service';
+import { handleUpdateAddress } from '../../service';
 
 const cx = classNames.bind(styles);
 
-function EditAddress({onCloseEditForm}) {
+function EditAddress({actionType, editingData, onCloseEditForm, refreshAddresses}) {
+
+    const [editData, setEditData] = useState({
+        id: editingData && editingData.id ? editingData.id : '',
+        fullName: editingData && editingData.fullName ? editingData.fullName : '',
+        phoneNumber: editingData && editingData.phoneNumber ? editingData.phoneNumber : '',
+        address: editingData && editingData.address ? editingData.address : '',
+        city: editingData && editingData.city ? editingData.city : ''
+    });
+
+    const addAddress = useAddAddress();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if(actionType === 'add') {
+            await addAddress(editData)
+        }else {
+            handleUpdateAddress(editData.id, editData)
+        }
+        onCloseEditForm();    
+        refreshAddresses()
+    };
 
     const handleCloseEditForm = (e) => {
         e.preventDefault();
-        onCloseEditForm(false);
+        onCloseEditForm();
     }
+
+    const inputData = (tag, content) => {
+        setEditData(prevData => ({
+            ...prevData,
+            [tag]: content
+        }));
+    };
 
     return (
         <div className={cx('address_page')}>
             <div className={cx('address_card')}>
                 <div className={cx('address_card_container')}>
                     <div className={cx('address_cancel_header')}>
-                        <button onClick={() => onCloseEditForm(false)} className={cx('cancel_header-button')}>
+                        <button onClick={() => onCloseEditForm()} className={cx('cancel_header-button')}>
                             <span>Cancel</span>
                         </button>
                     </div>
@@ -29,7 +60,7 @@ function EditAddress({onCloseEditForm}) {
                                     </label>
                                     <span className={cx('textfield_input_container')}>
                                         <span className={cx('textfield_input')}>
-                                            <input id="fullname"></input>
+                                            <input onChange={(e) => inputData("fullName", e.target.value)} id="fullname" value={editData.fullName}></input>
                                         </span>
                                     </span>
                                 </div>
@@ -41,7 +72,7 @@ function EditAddress({onCloseEditForm}) {
                                     </label>
                                     <span className={cx('textfield_input_container')}>
                                         <span className={cx('textfield_input')}>
-                                            <input id="phonenumber"></input>
+                                            <input onChange={(e) => inputData("phoneNumber", e.target.value)} id="phonenumber" value={editData.phoneNumber}></input>
                                         </span>
                                     </span>
                                 </div>
@@ -53,7 +84,7 @@ function EditAddress({onCloseEditForm}) {
                                     </label>
                                     <span className={cx('textfield_input_container')}>
                                         <span className={cx('textfield_input')}>
-                                            <input id="address"></input>
+                                            <input onChange={(e) => inputData("address", e.target.value)} id="address" value={editData.address}></input>
                                         </span>
                                     </span>
                                 </div>
@@ -65,7 +96,7 @@ function EditAddress({onCloseEditForm}) {
                                     </label>
                                     <span className={cx('textfield_input_container')}>
                                         <span className={cx('textfield_input')}>
-                                            <input id="city"></input>
+                                            <input onChange={(e) => inputData("city", e.target.value)} id="city" value={editData.city}></input>
                                         </span>
                                     </span>
                                 </div>
@@ -76,7 +107,7 @@ function EditAddress({onCloseEditForm}) {
                             <button onClick={(e) => handleCloseEditForm(e)} className={cx('cancel_edit_button')}>
                                 <span>Cancel</span>
                             </button>
-                            <button className={cx('save_edit_button')}>
+                            <button onClick={(e) => handleSubmit(e)} className={cx('save_edit_button')}>
                                 <span>Save</span>
                             </button>
                         </div>

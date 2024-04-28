@@ -179,6 +179,30 @@ ul {
     font-weight: 400;
     text-transform: inherit;
 }
+.order_content_cat {
+    display: flex;
+    flex-direction: row;
+    //gap: 0.9375rem;
+    max-width: 100%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 1.125rem 0px;
+    //padding: 1.5625rem;
+    background-color: rgb(248, 248, 248);
+    border-radius: 5px;
+}
+.order_content_cat  div {
+    padding: 18px 0;
+    width: 25%;
+    text-align: center;
+    height: 100%;
+    cursor: pointer;
+}
+.order_cat_title {
+    color: #141414;
+}
 .order_content_container {
     display: flex;
     flex-direction: column;

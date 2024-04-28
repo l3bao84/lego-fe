@@ -6,12 +6,13 @@ import EditAddress from '../EditAddress';
 
 const cx = classNames.bind(styles);
 
-function AddAddress() {
+function AddAddress({refreshAddresses}) {
 
     const [openEditForm, setOpenEditForm] = useState(false);
 
     const handleCloseEditForm = (data) => {
         setOpenEditForm(data)
+        refreshAddresses();
     }
 
     return (    
@@ -21,7 +22,7 @@ function AddAddress() {
             <div></div>
             <span>Add New Address</span>
         </button>
-        : (<EditAddress onCloseEditForm={handleCloseEditForm} ></EditAddress>)
+        : (<EditAddress actionType="add" onCloseEditForm={handleCloseEditForm} refreshAddresses={refreshAddresses}></EditAddress>)
         }
        </React.Fragment>
     )

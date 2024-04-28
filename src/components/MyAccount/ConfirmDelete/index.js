@@ -1,12 +1,21 @@
 import styles from '../MyAccountLayout.module.scss'
 import classNames from 'classnames/bind';
+import { handleDeleteAddress } from '../service';
 
 const cx = classNames.bind(styles);
 
-function ConfirmDeleteAddress({onOpenDeleteModal}) {
-
+function ConfirmDeleteAddress({deleteId, onOpenDeleteModal, refreshAddresses}) {
+    
     const handleCloseDeleteModal = () => {
         onOpenDeleteModal(false);
+        refreshAddresses()
+    }
+
+    const handleDelete = () => {
+        handleDeleteAddress(deleteId)
+        refreshAddresses()
+        onOpenDeleteModal(false);
+
     }
 
     return (    
@@ -22,13 +31,13 @@ function ConfirmDeleteAddress({onOpenDeleteModal}) {
                             <button onClick={() => handleCloseDeleteModal()} className={cx("cancel_delete_button")}>
                                 <span>Cancel</span>
                             </button>
-                            <button className={cx("confirm_delete_button")}>
+                            <button onClick={() => handleDelete()} className={cx("confirm_delete_button")}>
                                 <span>Delete</span>
                             </button>
                         </div>
                     </div>
                     <div className={cx("modal_closebutton")}>
-                        <button onClick={() => handleCloseDeleteModal()} className={cx("close_button")}>
+                        <button onClick={() => handleCloseDeleteModal()}  className={cx("close_button")}>
                             <div></div>
                         </button>
                     </div>

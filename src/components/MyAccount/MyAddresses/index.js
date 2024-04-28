@@ -4,26 +4,30 @@ import DefaultAddress from './DefaultAddress';
 import OtherAddress from './OtherAddress';
 import AddAddress from './AddAddress';
 import ConfirmDeleteAddress from '../ConfirmDelete';
-
+import { useAddress } from '../service';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function MyAddresses() {
 
-    const [openDeleteModal, setOpenDeleteModal] = useState(false)
+    const { addresses, refreshAddresses } = useAddress();
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [deleteId, setDeleteId] = useState(null);
 
-    const handleOpenModal = (newData) => {
-        setOpenDeleteModal(newData);
+    const handleOpenModal = (id,data) => {
+        setDeleteId(id)
+        setOpenDeleteModal(data);
+        refreshAddresses()
     }
 
     return (    
         <div className={cx("content_layout")}>
             <div>
-                <DefaultAddress onOpenDeleteModal={handleOpenModal}></DefaultAddress>
-                <OtherAddress onOpenDeleteModal={handleOpenModal}></OtherAddress>
-                <AddAddress></AddAddress>
-                {openDeleteModal && <ConfirmDeleteAddress onOpenDeleteModal={handleOpenModal}></ConfirmDeleteAddress>}
+                <DefaultAddress address={addresses && addresses} onOpenDeleteModal={handleOpenModal} refreshAddresses={refreshAddresses}></DefaultAddress>
+                <OtherAddress address={addresses && addresses} onOpenDeleteModal={handleOpenModal} refreshAddresses={refreshAddresses}></OtherAddress>
+                <AddAddress refreshAddresses={refreshAddresses}></AddAddress>
+                {openDeleteModal && <ConfirmDeleteAddress deleteId={deleteId} onOpenDeleteModal={handleOpenModal} refreshAddresses={refreshAddresses}></ConfirmDeleteAddress>}
             </div>
         </div>
     )

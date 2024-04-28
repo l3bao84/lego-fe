@@ -13,7 +13,7 @@ function InnerContentContainer({ data }) {
             <nav className={cx("breadcrumbs")}>
                 <ol>
                     <li className={cx("breadcrumb")}>
-                        <span><a href='/'>{data ? data.root : "Home"}</a></span>
+                        <span><a href={data ? 'my-account' : '/'}>{data ? data.root : "Home"}</a></span>
                         <div></div>
                     </li>
                     <li className={cx("breadcrumb")}>
@@ -34,7 +34,6 @@ function InnerContentContainer({ data }) {
             )) : (
                     <>
                         <AccountOverview></AccountOverview>
-                        <LatestOrder></LatestOrder>
                     </>
                 )
             }

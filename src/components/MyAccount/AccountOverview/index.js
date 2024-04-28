@@ -1,9 +1,33 @@
 import styles from '../MyAccountLayout.module.scss'
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function AccountOverview() {
+
+    const [personal, setPersonal] = useState({})
+
+    useEffect(() => {
+        fetch('http://localhost:8080/my-account/get-personal-info', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            setPersonal(data)
+        })
+        .catch(error => {
+            console.error(error.message);
+        });
+    }, []);
 
     return (
         <div>
@@ -14,11 +38,11 @@ function AccountOverview() {
                         <div className={cx("an_info_card")}>
                             <div className={cx("infor_horizontal_layout")}>
                                 <div>
-                                    <p className={cx("info_label")}>Lê Bảo</p>
-                                    <p className={cx("info_label")}>bao08042002@gmail.com</p>
-                                    <p className={cx("info_label")}>xã Hoàng Diệu, huyện Chương Mỹ, thành phố Hà Nội</p>
-                                    <p className={cx("info_label")}>0338171052</p>
-                                    <p className={cx("info_label")}>Order is being delivered: 2</p>
+                                    <p className={cx("info_label")}>{personal.fullname}</p>
+                                    <p className={cx("info_label")}>{personal.email}</p>
+                                    <p className={cx("info_label")}>{personal.address}</p>
+                                    <p className={cx("info_label")}>{personal.phonenumber}</p>
+                                    <p className={cx("info_label")}>{`Order is being delivered: ${personal.numberOfOder}`}</p>
                                 </div>
                             </div>
                         </div>
