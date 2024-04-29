@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { format } from 'date-fns';
 
 export const useDetailProduct = () => {
     const [product, setProduct] = useState();
@@ -100,3 +99,27 @@ export const useProductReviews = (page) => {
 
     return {reviews, totalPages}
 }  
+
+export const submitReview = async (formData) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.log('No token available');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:8080/reviews', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+            },
+            body: formData,
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const responseData = await response.json();
+        console.log('Review submitted successfully', responseData);
+    } catch (error) {
+        console.error('Failed to submit review:', error);
+    }
+}
