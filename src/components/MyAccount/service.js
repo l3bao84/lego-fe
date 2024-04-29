@@ -18,9 +18,9 @@ export const useAddress = () => {
                 'Content-Type': 'application/json',
             },
         })
-            .then(response => response.json())
+            .then((response) => response.json())
             .then(setAddresses)
-            .catch(error => console.error('Failed to fetch addresses', error));
+            .catch((error) => console.error('Failed to fetch addresses', error));
     }, [navigate]);
 
     useEffect(() => {
@@ -113,5 +113,65 @@ export const handleDeleteAddress = async (id) => {
         console.log('Address deleted successfully');
     } catch (error) {
         console.error('Error deleting address:', error);
+    }
+};
+
+export const useOrders = (type) => {
+    const [orders, setOrders] = useState([]);
+
+    const fetchOrders = useCallback(() => {
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return
+        }
+           
+        fetch(`http://localhost:8080/my-account/my-orders?type=${type}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setOrders(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching orders:', error);
+            });
+    }, [type]);
+
+    useEffect(() => {
+        fetchOrders();
+    }, [fetchOrders]);
+
+    return {orders, refreshOrders: fetchOrders};
+};
+
+export const cancelOrder = async (orderId) => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`http://localhost:8080/my-account/my-orders/${orderId}/cancel`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to cancel the order');
+        }
+
+        const result = await response.json();
+        console.log('Order cancelled successfully:', result);
+    } catch (error) {
+        console.error('Failed to cancel the order:', error);
+        throw error;
     }
 };
