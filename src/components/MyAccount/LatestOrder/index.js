@@ -11,34 +11,34 @@ const catFilterButton = [
     {
         id: 1,
         name: 'All',
-        type: 'ALL'
+        type: 'ALL',
     },
     {
         id: 2,
         name: 'Pending confirmation',
-        type: 'PENDING CONFIRMATION'
+        type: 'PENDING CONFIRMATION',
     },
     {
         id: 3,
         name: 'Delivering',
-        type: 'DELIVERING'
+        type: 'DELIVERING',
     },
     {
         id: 4,
         name: 'Completed',
-        type: 'COMPLETED'
+        type: 'COMPLETED',
     },
     {
         id: 5,
         name: 'Cancelled',
-        type: 'CANCELLED'
+        type: 'CANCELLED',
     },
 ];
 
 function LatestOrder() {
     const [selectedButton, setSelectedButton] = useState(1);
     const [orderType, setOrderType] = useState('ALL');
-    const {orders, refreshOrders} = useOrders(orderType);
+    const { orders, refreshOrders } = useOrders(orderType);
 
     const handleButtonClick = (index, type) => {
         setSelectedButton(index);
@@ -48,7 +48,7 @@ function LatestOrder() {
     const handleCancelOrder = async (orderId) => {
         await cancelOrder(orderId);
         refreshOrders();
-    }
+    };
 
     return (
         <div className={cx('latest_order_block')}>
@@ -71,37 +71,39 @@ function LatestOrder() {
             {orders.length > 0 ? (
                 orders.map((order, index) => (
                     <div key={index}>
+                        <div className={cx('order_content_container')}>
+                            <div className={cx('order_content_header')}>
+                                <div className={cx('order_content_status')}>
+                                    <span
+                                        style={{ color: order.status === 'CANCELLED' ? '#bd0000' : 'rgb(0, 151, 62)' }}
+                                    >
+                                        {order.status}
+                                    </span>
+                                    <span style={{ color: '#e0e0e0' }}> | </span>
+                                    <span>{order.paymentStatus}</span>
+                                </div>
+                            </div>
+                        </div>
                         {order.productOrderDTOList &&
                             order.productOrderDTOList.map((product, index) => (
-                                <div key={index} className={cx('order_content_container')}>
-                                    <div className={cx('order_content_header')}>
-                                        <div className={cx('order_content_status')}>
-                                            <span style={{color: order.status === "CANCELLED" ? "#bd0000" : "rgb(0, 151, 62)"}}>{order.status}</span>
-                                            <span style={{color: "#e0e0e0"}}> | </span>
-                                            <span>{order.paymentStatus}</span>
-                                        </div>
-                                        <div className={cx('order_content_product')}>
-                                            <div>
-                                                <div className={cx('order_content_product-item')}>
-                                                    <div className={cx('product_item_order')}>
-                                                        <div className={cx('product_item_order-img')}>
-                                                            <img
-                                                                src={`http://localhost:8080/img/${product.image}`}
-                                                            ></img>
-                                                        </div>
-                                                        <div className={cx('product_item_order-info')}>
-                                                            <div className={cx('product_item_name')}>
-                                                                <h3>{product.name}</h3>
-                                                            </div>
-                                                            <div className={cx('product_item_quantity')}>
-                                                                <span>{`Qty: ${product.quantity}`}</span>
-                                                            </div>
-                                                        </div>
+                                <div key={index} className={cx('order_content_product')}>
+                                    <div>
+                                        <div className={cx('order_content_product-item')}>
+                                            <div className={cx('product_item_order')}>
+                                                <div className={cx('product_item_order-img')}>
+                                                    <img src={`http://localhost:8080/img/${product.image}`}></img>
+                                                </div>
+                                                <div className={cx('product_item_order-info')}>
+                                                    <div className={cx('product_item_name')}>
+                                                        <h3>{product.name}</h3>
                                                     </div>
-                                                    <div className={cx('product_item_price')}>
-                                                        <span>{`$${product.price}`}</span>
+                                                    <div className={cx('product_item_quantity')}>
+                                                        <span>{`Qty: ${product.quantity}`}</span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div className={cx('product_item_price')}>
+                                                <span>{`$${product.price}`}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +120,10 @@ function LatestOrder() {
                             </div>
                             <div className={cx('order_content_total-action')}>
                                 {order.status === 'PENDING CONFIRMATION' ? (
-                                    <button onClick={() => handleCancelOrder(order.orderId)} className={cx('cancel_order_button')}>
+                                    <button
+                                        onClick={() => handleCancelOrder(order.orderId)}
+                                        className={cx('cancel_order_button')}
+                                    >
                                         <span>Cancel</span>
                                     </button>
                                 ) : (

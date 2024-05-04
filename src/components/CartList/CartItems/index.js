@@ -19,7 +19,7 @@ function CartItems({ data, reload }) {
             return total + (item.price * (quantities[index] || item.quantity || 1));
         }, 0);
         setSubtotal(newTotalPrice);
-        setorderTotal(newTotalPrice + (newTotalPrice * 5 / 100));
+        setorderTotal(newTotalPrice);
 
     }, [data]);
 
@@ -252,12 +252,12 @@ function CartItems({ data, reload }) {
                                                         <span className={cx('order-price')}>{`$${subtotal.toFixed(2)}`}</span>
                                                     </span>
                                                 </div>
-                                                <div className={cx('vat')}>
+                                                {/* <div className={cx('vat')}>
                                                     <div className={cx('vat-text')}>
                                                         <div>VAT</div>
                                                         <div>5%</div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <div className={cx('order-total')}>
                                                     <div className={cx('total-row')}>
                                                         <div className={cx('total-row-title')}>
@@ -271,7 +271,7 @@ function CartItems({ data, reload }) {
                                             </div>
                                         </div>
                                         <div className={cx('order-summary-button-wrapper')}>
-                                            <a className={cx('order-summary-link')}>
+                                            <a href='/checkout' className={cx('order-summary-link')}>
                                                 <div className={cx('icon-wrapper')}>
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"

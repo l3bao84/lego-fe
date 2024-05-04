@@ -3,15 +3,16 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { isNullOrEmpty } from '../service';
 import { isEnableButton } from '../service';
+import { handleUpdateAddress } from '~/components/MyAccount/service';
 
 const cx = classNames.bind(styles);
 
-function EditAddressCheckout({onClose, onChange}) {
+function EditAddressCheckout({ data, onClose}) {
 
-    const [fullname, setFullname] = useState('')
-    const [phonenumber, setPhonenumber] = useState('')
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
+    const [fullname, setFullname] = useState(data.fullName)
+    const [phonenumber, setPhonenumber] = useState(data.phoneNumber)
+    const [add, setAdd] = useState(data.address)
+    const [city, setCity] = useState(data.city)
 
     const inputFields = [
         {
@@ -33,7 +34,7 @@ function EditAddressCheckout({onClose, onChange}) {
             tag: "address",
             label: "Address",
             type: "text",
-            value: address
+            value: add
         },
         {
             id: 4,
@@ -46,14 +47,20 @@ function EditAddressCheckout({onClose, onChange}) {
 
     const handleEditForm = (e) => {
         e.preventDefault();
-        onClose();
+        onClose(data);
     }
 
     const handleUseThisData = (e) => {
         e.preventDefault();
-        var editedAddress = `${fullname}, ${address}, ${city}, (${phonenumber})`
-        onChange(editedAddress);
-        onClose();
+        var address = {
+            fullName: fullname,
+            address: add,
+            city: city,
+            phoneNumber: phonenumber
+        };
+        handleUpdateAddress(data.id, address)
+        window.location.reload()
+        onClose(address);
     }
 
     const handleInputData = (valueTag, e) => {
@@ -65,7 +72,7 @@ function EditAddressCheckout({onClose, onChange}) {
                 setPhonenumber(e.target.value);
                 break;
             case "address":
-                setAddress(e.target.value);
+                setAdd(e.target.value);
                 break;
             case "city":
                 setCity(e.target.value);
@@ -104,7 +111,7 @@ function EditAddressCheckout({onClose, onChange}) {
                         <div className={cx("button_container")}>
                             <div className={cx("button_flex_submit")}>
                                 <button 
-                                    style={{pointerEvents: isEnableButton({fullname: fullname, phonenumber: phonenumber, address: address, city: city}) ? "none" : "auto"}} 
+                                    style={{pointerEvents: isEnableButton({fullname: fullname, phonenumber: phonenumber, address: add, city: city}) ? "none" : "auto"}} 
                                     onClick={(e) => handleUseThisData(e)} 
                                     className={cx("button_primary")}>
                                     <span>Use this address</span>

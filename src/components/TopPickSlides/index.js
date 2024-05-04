@@ -40,13 +40,12 @@ function TopPickSlides() {
                 modules={[Pagination, Autoplay]}
                 spaceBetween={0}
                 slidesPerView={1}
-                pagination = {{clickable: true}}
+                pagination={{ clickable: true }}
                 loop={true}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-
             >
                 <SwiperSlide>
                     <div className={cx('slide')}>
@@ -65,10 +64,21 @@ function TopPickSlides() {
                                         <div className={cx('infor-detail-name')}>{item.productName}</div>
                                         <div className={cx('infor-detail-price')}>{`$${item.price}`}</div>
                                         <div className={cx('infor-detail-action')}>
-                                            <a className={cx("detail-action-link")}>
+                                            <a className={cx('detail-action-link')}>
                                                 Shop now
-                                                <svg width="18" height="28" viewBox="0 0 18 28" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"  data-di-res-id="dc762c40-c286e5f8" data-di-rand="1707402895159">
-                                                    <path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="currentColor"></path>
+                                                <svg
+                                                    width="18"
+                                                    height="28"
+                                                    viewBox="0 0 18 28"
+                                                    aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    data-di-res-id="dc762c40-c286e5f8"
+                                                    data-di-rand="1707402895159"
+                                                >
+                                                    <path
+                                                        d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z"
+                                                        fill="currentColor"
+                                                    ></path>
                                                 </svg>
                                             </a>
                                         </div>
