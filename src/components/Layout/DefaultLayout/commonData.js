@@ -39,7 +39,7 @@ export const discovers = [
     },
     {
         id: 2,
-        title: "All LEGO Interests"
+        title: "All Nidas Interests"
     },
     {
         id: 3,
@@ -55,11 +55,11 @@ export const discovers = [
     },
     {
         id: 6,
-        title: "LEGO® Mosaic Maker"
+        title: "Nidas® Mosaic Maker"
     },
     {
         id: 7,
-        title: "LEGO® Gift Ideas"
+        title: "Nidas® Gift Ideas"
     }
 ]
 
@@ -74,7 +74,7 @@ export const helps = [
     },
     {
         id: 3,
-        title: "Find a LEGO Store"
+        title: "Find a Nidas Store"
     },
     {
         id: 4,
@@ -97,11 +97,11 @@ export const helps = [
 export const aboutUs = [
     {
         id: 1,
-        title: "About the LEGO Group"
+        title: "About the Nidas Group"
     },
     {
         id: 2,
-        title: "LEGO® News"
+        title: "Nidas® News"
     },
     {
         id: 3,
@@ -113,15 +113,15 @@ export const aboutUs = [
     },
     {
         id: 5,
-        title: "LEGO Product Certification"
+        title: "Nidas Product Certification"
     },
     {
         id: 6,
-        title: "LEGO Jobs"
+        title: "Nidas Jobs"
     },
     {
         id: 7,
-        title: "LEGO Compliance Line"
+        title: "Nidas Compliance Line"
     }
 ]
 
@@ -132,7 +132,7 @@ export const supports = [
     },
     {
         id: 2,
-        title: "LEGO® NewsLEGO® News"
+        title: "Nidas® NewsNidas® News"
     },
     {
         id: 3,
@@ -159,34 +159,34 @@ export const supports = [
 export const attactions = [
     {
         id: 1,
-        title: "LEGO® House"
+        title: "Nidas® House"
     },
     {
         id: 2,
-        title: "LEGOLAND® Parks"
+        title: "NidasLAND® Parks"
     },
     {
         id: 3,
-        title: "LEGOLAND Discovery Centers"
+        title: "NidasLAND Discovery Centers"
     },
 ]
 
 export const moreUs = [
     {
         id: 1,
-        title: "LEGO® LIFE"
+        title: "Nidas® LIFE"
     },
     {
         id: 2,
-        title: "LEGO Education"
+        title: "Nidas Education"
     },
     {
         id: 3,
-        title: "LEGO Ideas"
+        title: "Nidas Ideas"
     },
     {
         id: 4,
-        title: "LEGO Foundation"
+        title: "Nidas Foundation"
     },
     {
         id: 5,
@@ -198,7 +198,7 @@ export const moreUs = [
     },
     {
         id: 7,
-        title: "LEGO® Braille Bricks"
+        title: "Nidas® Braille Bricks"
     },
 ]
 

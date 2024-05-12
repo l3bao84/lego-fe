@@ -40,7 +40,7 @@ function Footer() {
                         <div className={cx('wrapper-logo-region')}>
                             <div className={cx('logo-region')}>
                                 <div className={cx('logo-img2')}>
-                                    <img src="https://assets.lego.com/logos/v4.5.0/brand-lego.svg" alt="" />
+                                    <img src="https://nidas.hi.link/_assets/site-data/ops_Zmctdq5vlG64qvFFiw/images/9319c80b29e29af1aa255c1750ab1ebca33a904137e5ed04e25e93fd646c9cdf.png" alt="" />
                                 </div>
                                 <div className={cx('region')}>
                                     <button>
@@ -54,10 +54,10 @@ function Footer() {
                                     <span>Gift Cards</span>
                                 </a>
                                 <a href="#">
-                                    <span>LEGO Catalogs</span>
+                                    <span>Nidas Catalogs</span>
                                 </a>
                                 <a href="#">
-                                    <span>Find a LEGO Store</span>
+                                    <span>Find a Nidas Store</span>
                                 </a>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ function Footer() {
                 <div className={cx('email-social')}>
                     <div className={cx('email-sub')}>
                         <div className={cx('email-sub-content')}>
-                            <span>SUBSCRIBE TO LEGO® SHOP EMAILS</span>
+                            <span>SUBSCRIBE TO Nidas® SHOP EMAILS</span>
                             <div className={cx('email-input-container')}>
                                 <div className={cx('input-button')}>
                                     <div ref={emailRef} className={cx('email')}>
@@ -172,9 +172,9 @@ function Footer() {
                         ))}
                     </ul>
                     <p>
-                        LEGO System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. LEGO,
-                        the LEGO logo, the Minifigure, DUPLO, LEGENDS OF CHIMA, NINJAGO, BIONICLE, MINDSTORMS and MIXELS
-                        are trademarks and copyrights of the LEGO Group. ©2022 The LEGO Group. All rights reserved. Use
+                        Nidas System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. Nidas,
+                        the Nidas logo, the Minifigure, DUPLO, LEGENDS OF CHIMA, NINJAGO, BIONICLE, MINDSTORMS and MIXELS
+                        are trademarks and copyrights of the Nidas Group. ©2022 The Nidas Group. All rights reserved. Use
                         of this site signifies your agreement to the terms of use.
                     </p>
                 </div>

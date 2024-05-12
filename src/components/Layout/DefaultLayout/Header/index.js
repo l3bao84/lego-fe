@@ -135,7 +135,7 @@ function Header() {
                             <div>
                                 <nav className={cx("navigation")}>
                                     <a href="http://localhost:3000" className={cx("logo-link")}>
-                                        <img src="https://assets.lego.com/logos/v4.5.0/brand-lego.svg"></img>
+                                        <img src="https://nidas.hi.link/_assets/site-data/ops_Zmctdq5vlG64qvFFiw/images/9319c80b29e29af1aa255c1750ab1ebca33a904137e5ed04e25e93fd646c9cdf.png"></img>
                                     </a>
                                     <ul className={cx("menu")}>
                                         {menus.map(menu => (
