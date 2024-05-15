@@ -3,6 +3,7 @@ import RecommendedProducts from '~/components/RecommendedProducts';
 import QuickLinks from '~/components/QuickLinks';
 import TopPickSlides from '~/components/TopPickSlides';
 import OrderNoti from '~/components/OrderNoti';
+import FaceBookMsg from '~/components/FacebookMessenger';
 import { useEffect, useState } from 'react';
 
 function Home() {
@@ -71,6 +72,7 @@ function Home() {
         QuickLinks: <QuickLinks></QuickLinks>,
         RecommendedProducts: <RecommendedProducts></RecommendedProducts>,
         OrderNoti: showOrderNoti ? <OrderNoti onClose={handleCloseOrderNoti} /> : null,
+        FaceBookMsg: <FaceBookMsg></FaceBookMsg>,
     };
 
     return <DefaultLayout props={contentProps}></DefaultLayout>;
