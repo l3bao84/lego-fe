@@ -1,13 +1,12 @@
-"use client"
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
-import { FacebookProvider, CustomChat } from 'react-facebook';
-
-function FaceBookMsg () {
+function FaceBookMsg() {
     return (
-        <FacebookProvider appId="855943853021098" chatSupport>
-          <CustomChat pageId="309005125632399" minimized="true"/>
-        </FacebookProvider>    
-      );
+      <MessengerCustomerChat 
+        pageId="309005125632399" 
+        appId="937785827910171"
+      />
+    )
 }
 
 export default FaceBookMsg;
