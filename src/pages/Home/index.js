@@ -72,7 +72,7 @@ function Home() {
         QuickLinks: <QuickLinks></QuickLinks>,
         RecommendedProducts: <RecommendedProducts></RecommendedProducts>,
         OrderNoti: showOrderNoti ? <OrderNoti onClose={handleCloseOrderNoti} /> : null,
-        FaceBookMsg: <FaceBookMsg></FaceBookMsg>,
+        //FaceBookMsg: <FaceBookMsg></FaceBookMsg>,
     };
 
     return <DefaultLayout props={contentProps}></DefaultLayout>;
