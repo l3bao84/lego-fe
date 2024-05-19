@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { aboutUs, attactions, supports, moreUs, privacies } from '../commonData';
-import FaceBookMsg from '~/components/FacebookMessenger';
 
 const cx = classNames.bind(styles);
 
@@ -35,7 +34,6 @@ function Footer() {
 
     return (
         <footer>
-            <FaceBookMsg/>
             <div className={cx('footer-1')}>
                 <div className={cx('footer-section')}>
                     <div className={cx('footer-section-wrapper')}>
