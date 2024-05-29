@@ -14,13 +14,13 @@ function Home() {
 
         const searchParams = new URLSearchParams(window.location.search);
         const orderStatus = searchParams.get('order');
+        const payerId = searchParams.get('PayerID');
+        const paymentId = searchParams.get('paymentId');
 
-        if (orderStatus === 'success') {
+        if (orderStatus === 'success' || (paymentId !== null && payerId !== null)) {
             setShowOrderNoti(!showOrderNoti);
         }
 
-        const payerId = searchParams.get('PayerID');
-        const paymentId = searchParams.get('paymentId');
         const formData = new FormData();
         formData.append('paymentId', paymentId);
         formData.append('payerId', payerId);

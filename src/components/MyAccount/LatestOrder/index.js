@@ -50,6 +50,10 @@ function LatestOrder() {
         refreshOrders();
     };
 
+    const fixPrice = (price) => {
+        return price.toFixed(2);
+    }
+
     return (
         <div className={cx('latest_order_block')}>
             <h2 className={cx('latest_order_block-text')}>
@@ -103,7 +107,7 @@ function LatestOrder() {
                                                 </div>
                                             </div>
                                             <div className={cx('product_item_price')}>
-                                                <span>{`$${product.price}`}</span>
+                                                <span>{`$${fixPrice(product.price)}`}</span>
                                             </div>
                                         </div>
                                     </div>

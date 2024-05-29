@@ -92,7 +92,7 @@ function CheckoutContent() {
     };
 
     const calculateTotalPrice = (subtotal, shippingcost) => {
-        return subtotal + shippingcost;
+        return (subtotal + shippingcost).toFixed(2);
     };
 
     const handleCloseEditForm = (data) => {

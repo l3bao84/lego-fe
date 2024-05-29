@@ -16,7 +16,7 @@ function CheckoutHeader() {
                     </div>
                 </div>
                 <div className={cx("logo-container")}>
-                    <img data-skroll="Logo" src="https://assets.lego.com/logos/v4.6.0/brand-lego.svg" width="100" height="60" decoding="async" loading="lazy" aria-hidden="false" aria-label="LEGO Brand Logo" role="img" data-test="logo-brand-lego"/>
+                    <img data-skroll="Logo" src="https://nidas.hi.link/_assets/site-data/ops_Zmctdq5vlG64qvFFiw/images/9319c80b29e29af1aa255c1750ab1ebca33a904137e5ed04e25e93fd646c9cdf.png" width="100" height="60" decoding="async" loading="lazy" aria-hidden="false" aria-label="LEGO Brand Logo" role="img" data-test="logo-brand-lego"/>
                 </div>
                 <div className={cx("secure_checkout-container")}>
                     <div className={cx("icon_wrapper")}>
